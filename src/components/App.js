@@ -55,7 +55,8 @@ export default class App extends Component {
 
     return (
       <main>
-        <h1>Generate the Memes</h1>
+        <h1>Is it A Pigeon?</h1>
+        <h2>You Tell Me!</h2>
         <fieldset>
           <div>
             <label>
