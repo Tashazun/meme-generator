@@ -10,10 +10,24 @@ export default class App extends Component {
     super();
 
     this.state = {
-      text: 'Witty repartee!',
+      header: 'Witty repartee!',
+      footer: 'And some more!',
       image: null
 
     };
+    this.headerChange = this.headerChange.bind(this);
+    this.footerChange = this.footerChange.bind(this);
+    this.handleImageSrc = this.handleImageSrc.bind(this);
+    this.handleExport = this.handleExport.bind(this);
+    this.handleUpload = this.handleUpload.bind(this);
+  }
+
+  headerChange({ target }) {
+    this.setState({ header: target.value });
+  }
+
+  footerChange({ target }) {
+    this.setState({ footer: target.value });
   }
 
   handleImageSrc({ target }) {
@@ -37,7 +51,7 @@ export default class App extends Component {
   }
 
   render() {
-    const { text, image } = this.state;
+    const { header, footer, image } = this.state;
 
     return (
       <main>
@@ -45,11 +59,18 @@ export default class App extends Component {
         <fieldset>
           <div>
             <label>
-              Text:
-              <input value={text}/>
+              Header:
+              <input value={header} onChange={event => this.headerChange(event)}/>
+            </label>
+            <br />
+            <label>
+              Footer:
+              <input value={footer} onChange={event => this.footerChange(event)}/>
             </label>
           </div>
         </fieldset>
+        
+        
 
         <section>
           <div>
@@ -77,13 +98,12 @@ export default class App extends Component {
           <div className="image-container"
             ref={node => this.imageExport = node}
           >
-            <h1>What an image!</h1>
+            <h1>Dank memes!</h1>
             <img src={image}/>
           </div>
         </section>
       </main>
     );
-
 
   }
 
