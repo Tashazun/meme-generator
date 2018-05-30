@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import dom2image from 'dom-to-image';
 import fileSaver from 'file-saver';
+import meme from './meme.jpg';
 
 
 export default class App extends Component {
@@ -94,12 +95,11 @@ export default class App extends Component {
             </button>
           </div>
 
-          <div className="image-container"
-            ref={node => this.imageExport = node}
-          >
-            <div>{header}</div>
-            <div>{footer}</div>
-            <img src={image}/>
+          <div className="image-container" ref={node => this.imageExport = node}>
+            <div id="memeHeader">{header}</div>
+            <div id="memeFooter">{footer}</div>
+            <img id="topImage" src={image}/>
+            <img id="baseImage" src={meme}/>
           </div>
         </section>
       </main>

@@ -2,12 +2,24 @@ body {
     font-family: sans-serif;
     color: #111;
   }
-  
-  .image-container {
-    position: relative;
-  }
-  
-  .image-container * {
+
+#memeHeader {
     position: absolute;
-    top: 0;
-  }
+    top: 50%;
+    left: 5%;
+}
+
+#memeFooter {
+    position: absolute;
+    top: 75%;
+    left: 20%;
+}
+
+#topImage {
+    position: absolute;
+    top: 50%;
+    left: 45%;
+    width: 20px;
+    height: 20px;
+}
+
