@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react';
 import dom2image from 'dom-to-image';
 import fileSaver from 'file-saver';
@@ -91,14 +90,15 @@ export default class App extends Component {
 
           <div>
             <button onClick={() => this.handleExport()}>
-              Export
+              Export dis meme
             </button>
           </div>
 
           <div className="image-container"
             ref={node => this.imageExport = node}
           >
-            <h1>Dank memes!</h1>
+            <div>{header}</div>
+            <div>{footer}</div>
             <img src={image}/>
           </div>
         </section>
