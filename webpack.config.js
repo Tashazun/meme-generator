@@ -1,5 +1,6 @@
 /* eslint-env node */
 const path = require('path');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
   entry: './src/index.js',
@@ -8,7 +9,7 @@ module.exports = {
     filename: 'bundle.js'
   },
   devServer: {
-    contentBase: './dist'
+    contentBase: './build'
   },
   module: {
     rules: [
@@ -32,5 +33,8 @@ module.exports = {
         ]
       }
     ]
-  }
+  },
+  plugins: [
+    new CleanWebpackPlugin(`${path}/bundle.*.js`), 
+  ],
 };
