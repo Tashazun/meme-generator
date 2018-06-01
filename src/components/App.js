@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import dom2image from 'dom-to-image';
 import fileSaver from 'file-saver';
 import meme from './meme.jpg';
+import FontPicker from 'font-picker-react';
 
 
 export default class App extends Component {
@@ -10,8 +11,9 @@ export default class App extends Component {
     super();
 
     this.state = {
-      header: 'Witty repartee!',
-      footer: 'And some more!',
+      header: 'Noun Here',
+      footer: 'Is this a Meme?',
+      activeFont: 'Open Sans',
       image: null
 
     };
@@ -53,10 +55,10 @@ export default class App extends Component {
   render() {
     const { header, footer, image } = this.state;
 
+
     return (
       <main>
         <h1>Is it A Pigeon?</h1>
-        <h2>You Tell Me!</h2>
         <fieldset>
           <div>
             <label>
@@ -68,6 +70,13 @@ export default class App extends Component {
               Footer:
               <input value={footer} onChange={event => this.footerChange(event)}/>
             </label>
+            <div>
+              <FontPicker
+                apiKey="AIzaSyAB69_nOVWe6KjrdCROZE0JvdjD1Iy3j1I"
+                activeFont={this.state.activeFont}
+                onChange={nextFont => this.setState({ activeFont: nextFont.family })}
+              />
+            </div>
           </div>
         </fieldset>
         
@@ -97,8 +106,8 @@ export default class App extends Component {
           </div>
 
           <div className="image-container" ref={node => this.imageExport = node}>
-            <div id="memeHeader">{header}</div>
-            <div id="memeFooter">{footer}</div>
+            <div id="memeHeader" className=" apply-font">{header}</div>
+            <div id="memeFooter" className=" apply-font">{footer}</div>
             <img id="topImage" src={image}/>
             <img id="baseImage" src={meme}/>
           </div>
