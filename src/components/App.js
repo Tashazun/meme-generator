@@ -13,6 +13,7 @@ export default class App extends Component {
     this.state = {
       header: 'Noun Here',
       footer: 'Is this a Meme?',
+      color: '#000000',
       activeFont: 'Open Sans',
       image: null
 
@@ -22,6 +23,7 @@ export default class App extends Component {
     this.handleImageSrc = this.handleImageSrc.bind(this);
     this.handleExport = this.handleExport.bind(this);
     this.handleUpload = this.handleUpload.bind(this);
+    this.colorChange = this.colorChange.bind(this);
   }
 
   headerChange({ target }) {
@@ -30,6 +32,10 @@ export default class App extends Component {
 
   footerChange({ target }) {
     this.setState({ footer: target.value });
+  }
+
+  colorChange({ target }) {
+    this.setState({ color: target.value });
   }
 
   handleImageSrc({ target }) {
@@ -53,13 +59,13 @@ export default class App extends Component {
   }
 
   render() {
-    const { header, footer, image } = this.state;
+    const { header, footer, color, image } = this.state;
 
 
     return (
       <main>
         <h1>Is it A Pigeon?</h1>
-        <fieldset>
+        <fieldset id="form">
           <div>
             <label>
               Header:
@@ -69,6 +75,14 @@ export default class App extends Component {
             <label>
               Footer:
               <input value={footer} onChange={event => this.footerChange(event)}/>
+            </label>
+            <label>
+              Font Color:
+              <input
+                type="color"
+                value={color}
+                onChange={event => this.colorChange(event)}
+              />
             </label>
             <div>
               <FontPicker
@@ -106,8 +120,8 @@ export default class App extends Component {
           </div>
 
           <div className="image-container" ref={node => this.imageExport = node}>
-            <div id="memeHeader" className=" apply-font">{header}</div>
-            <div id="memeFooter" className=" apply-font">{footer}</div>
+            <div id="memeHeader" style={{ color }} className="apply-font">{header}</div>
+            <div id="memeFooter" style={{ color }} className="apply-font">{footer}</div>
             <img id="topImage" src={image}/>
             <img id="baseImage" src={meme}/>
           </div>

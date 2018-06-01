@@ -9,6 +9,10 @@ h1, h2 {
     text-align: center;
 }
 
+#form {
+    display: grid;
+}
+
 .image-container {
     position: relative;
 }
