@@ -3,7 +3,7 @@ import dom2image from 'dom-to-image';
 import fileSaver from 'file-saver';
 import meme from './meme.jpg';
 import FontPicker from 'font-picker-react';
-console.log(process.env);
+
 export default class App extends Component {
 
   constructor() {
