@@ -13,6 +13,9 @@
       "es6": true,
       "browser": true
     },
+    "globals": {
+      "process": false
+    },
     "plugins": [
       "babel"
     ],

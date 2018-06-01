@@ -2,6 +2,7 @@
 const path = require('path');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   entry: './src/index.js',
@@ -51,7 +52,8 @@ module.exports = {
     new CleanWebpackPlugin(`${path}/bundle.*.js`),
     new HtmlWebpackPlugin({
       title: 'Meme',
-      filename: 'dist/index.html'
-    })
+      filename: 'dist/index.html',
+    }),
+    new Dotenv()
   ],
 };

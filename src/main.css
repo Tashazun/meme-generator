@@ -9,9 +9,28 @@ h1, h2 {
     text-align: center;
 }
 
+fieldset {
+    border: none;
+}
+
 #form {
     display: grid;
+    grid-template-columns: 20% 2fr;
+    grid-gap: 5%;
 }
+#section {
+    display: flex;
+}
+
+#form label {
+    grid-column: 1 / 2;
+}
+ 
+#form input,
+button {
+    grid-column: 2 / 3;
+}
+
 
 .image-container {
     position: relative;

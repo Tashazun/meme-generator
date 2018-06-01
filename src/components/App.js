@@ -3,8 +3,7 @@ import dom2image from 'dom-to-image';
 import fileSaver from 'file-saver';
 import meme from './meme.jpg';
 import FontPicker from 'font-picker-react';
-
-
+console.log(process.env);
 export default class App extends Component {
 
   constructor() {
@@ -65,65 +64,64 @@ export default class App extends Component {
     return (
       <main>
         <h1>Is it A Pigeon?</h1>
-        <fieldset id="form">
-          <div>
+        <fieldset>
+          <div id ="form">
             <label>
               Header:
-              <input value={header} onChange={event => this.headerChange(event)}/>
             </label>
+            <input value={header} onChange={event => this.headerChange(event)}/>
             <br />
             <label>
               Footer:
-              <input value={footer} onChange={event => this.footerChange(event)}/>
             </label>
+            <input value={footer} onChange={event => this.footerChange(event)}/>
             <label>
               Font Color:
-              <input
-                type="color"
-                value={color}
-                onChange={event => this.colorChange(event)}
-              />
             </label>
+            <input
+              type="color"
+              value={color}
+              onChange={event => this.colorChange(event)}
+            />
             <div>
               <FontPicker
-                apiKey="AIzaSyAB69_nOVWe6KjrdCROZE0JvdjD1Iy3j1I"
+                apiKey={process.env.APIKEY}
                 activeFont={this.state.activeFont}
                 onChange={nextFont => this.setState({ activeFont: nextFont.family })}
               />
+
             </div>
           </div>
-        </fieldset>
-        
-        
+        </fieldset>     
 
-        <section>
+        <div className="image-container" ref={node => this.imageExport = node}>
+          <div id="memeHeader" style={{ color }} className="apply-font">{header}</div>
+          <div id="memeFooter" style={{ color }} className="apply-font">{footer}</div>
+          <img id="topImage" src={image}/>
+          <img id="baseImage" src={meme}/>
+        </div>
+
+        <section id="section">
           <div>
             <label>
               Image Src:
-              <input onChange={event => this.handleImageSrc(event)}/>
             </label>
+            <input onChange={event => this.handleImageSrc(event)}/>
           </div>
           <div>
             <label>
               Image:
-              <input 
-                type="file" 
-                onChange={event => this.handleUpload(event)}
-              />
             </label>
+            <input 
+              type="file" 
+              onChange={event => this.handleUpload(event)}
+            />
           </div>
 
           <div>
             <button onClick={() => this.handleExport()}>
               Export dis meme
             </button>
-          </div>
-
-          <div className="image-container" ref={node => this.imageExport = node}>
-            <div id="memeHeader" style={{ color }} className="apply-font">{header}</div>
-            <div id="memeFooter" style={{ color }} className="apply-font">{footer}</div>
-            <img id="topImage" src={image}/>
-            <img id="baseImage" src={meme}/>
           </div>
         </section>
       </main>
